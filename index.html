@@ -62,7 +62,7 @@
       <section class="hero">
         <div class="container hero-container">
           <h1 class="hero-title">Effective solutions for your business</h1>
-          <button class="hero-btn hero-btn-text" type="button">
+          <button class="hero-btn hero-btn-text" type="button" data-modal-open>
             Order service
           </button>
         </div>
@@ -358,7 +358,7 @@
     </main>
     <!--Footer-->
     <footer class="footer">
-     <div class="footer-container container">
+      <div class="footer-container container">
         <div class="container footer-info">
           <a class="logo link" href="./index.html"
             >Web<span class="logo-studio-footer">Studio</span></a
@@ -401,7 +401,18 @@
             </li>
           </ul>
         </div>
-     </div >
+      </div>
     </footer>
+    <!--MODAL-->
+    <div class="backdrop is-hidden" data-modal>
+      <div class="modal">
+        <button type="button" class="modal-close-btn" data-modal-close>
+          <svg class="close-icon" width="8" height="8">
+            <use href="./images/sprite.svg#icon-close-icon"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>

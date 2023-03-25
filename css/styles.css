@@ -8,7 +8,9 @@
   --general-align-items: center;
   --flex-main-gap: 40px;
   --flex-list-gap: 24px;
+  --timing-fn: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 body {
   font-family: "Roboto", sans-serif;
   color: var(--primary-text-color);
@@ -96,6 +98,7 @@ address {
   gap: var(--flex-main-gap);
   padding: 0;
   margin-left: 76px;
+  transition: 250ms var(--timing-fn);
 }
 
 .menu-link {
@@ -120,6 +123,7 @@ address {
   margin-left: auto;
   align-items: var(--general-align-items);
   gap: var(--flex-main-gap);
+  transition: 250ms var(--timing-fn);
 }
 
 .address {
@@ -347,11 +351,16 @@ address {
   height: 40px;
   border-radius: 50%;
   background-color: #4d5ae5;
+  transition: background-color 250ms var(--timing-fn);
 }
 
 .social-list-link:hover,
 .social-list-link:focus {
   background-color: #404bbf;
+}
+
+.social-list-icon {
+  transition: fill 250ms var(--timing-fn);
 }
 
 .social-list-icon {
@@ -382,6 +391,7 @@ address {
   gap: 24px;
   padding: 16px 32px;
   cursor: pointer;
+  transition: 250ms var(--timing-fn);
 }
 
 .customers-icon {
@@ -392,6 +402,10 @@ address {
 .customers-link:focus {
   border: 1px solid #404bbf;
   color: #404bbf;
+}
+
+.customers-icon {
+  transition: fill 250ms var(--timing-fn);
 }
 
 .customers-link:hover .customers-icon,
@@ -456,11 +470,16 @@ address {
   height: 40px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color 250ms var(--timing-fn);
 }
 
 .footer-social-list-link:hover,
 .footer-social-list-link:focus {
   background-color: #31d0aa;
+}
+
+.footer-social-list-icon {
+  transition: fill 250ms var(--timing-fn);
 }
 
 .footer-social-list-icon {
@@ -496,6 +515,8 @@ address {
   border: 1px solid #e7e9fc;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 250ms var(--timing-fn),
+    color 250ms var(--timing-fn);
 }
 
 .portfolio-btn:hover,
@@ -522,12 +543,38 @@ address {
 
 .card-link {
   display: block;
+  transition: box-shadow 250ms var(--timing-fn);
 }
 
 .card-link:hover,
 .card-link:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.card-link:hover .card-cover-text,
+.card-link:focus .card-cover-text {
+  transform: translateY(0);
+}
+
+.card-cover {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-cover-text {
+  position: absolute;
+  top: 0;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: var(--line-height);
+  letter-spacing: var(--general-letter-spacing);
+  color: #f4f4fd;
+  background-color: #4d5ae5;
+  padding: 32px;
+  height: 100%;
+  transform: translateY(100%);
+  transition: transform 250ms var(--timing-fn);
 }
 
 .card-info {
@@ -553,4 +600,71 @@ address {
   line-height: var(--line-height);
   letter-spacing: var(--general-letter-spacing);
   color: var(--primary-text-color);
+}
+
+/**MODAL*/
+.backdrop {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(46, 47, 66, 0.4);
+  opacity: 1;
+  transition: opacity 250ms var(--timing-fn), visability 250ms var(--timing-fn);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: rotate(180deg);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 408px;
+  height: 576px;
+  background-color: #fcfcfc;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  transition: transform 250ms var(--timing-fn);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  transition: 250ms var(--timing-fn);
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: #404bbf;
+}
+
+.close-icon {
+  transition: fill 250ms var(--timing-fn);
+}
+
+.modal-close-btn:hover .close-icon,
+.modal-close-btn:focus .close-icon {
+  fill: #ffffff;
 }
