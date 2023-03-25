@@ -43,8 +43,11 @@ address {
   font-style: normal;
 }
 
-.list {
+ul {
+  font-style: normal;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .link {
@@ -116,6 +119,22 @@ address {
 .menu-link:focus {
   color: #404bbf;
   text-decoration: underline #404bbf;
+}
+
+.current {
+  position: relative;
+}
+
+.current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  display: block;
+  width: 100%;
+  height: 4px;
+  background: #404bbf;
+  border-radius: 2px;
 }
 
 .contacts {
